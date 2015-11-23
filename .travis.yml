@@ -1,11 +1,22 @@
 language: java
-script: cd sdk ; mvn test
 
+script: 
+  - cd sdk ; mvn test
+  - echo $test
+
+  
 jdk:
   - oraclejdk7
   - openjdk7
   - oraclejdk8
 
+env:
+  global:
+    - secure: AY/WnvjknqI6llhXtbbkkpr2OX0mHm8XeabEUHvW/Pts1nl6518Hqcb4nokJWQag/9/+9wFoFL3JKDNWUkJRzs+uYHnDZuKaklXtrGz3OxzYRZpyFkxN3tjov5eVmRzPREQnCPqVCSxkIszKpJXiFxZg7XnZNS4E5AQ52zb0NjcxKb9FvdyK5TrJaumQj+NLJRZypjbFJAWOnf31gag7uuw2/36MhDCcxeCkce55RNg1UR4BlnbxuIoqYGOobx4ikLFMT4I6yARUjNbJ9itLpuhLfYrg3A4psuxvLwr2LVn8gzOGN8yEH/pAzJtxsVAocVgaQsLhAVXzIl1Z+gtP5A==
+  
 matrix:
-  allow_failures:
-    - jdk: oraclejdk8
+  exclude:
+    - jdk: openjdk7
+      env: test=name
+
+#cache: true
